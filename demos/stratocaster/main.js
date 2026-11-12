@@ -415,6 +415,8 @@ const valuesM = stops.map((el, i) => Object.fromEntries(KEYS.map((k) => {
   return [k, m !== undefined ? parseFloat(m) : k === 'x' ? 0 : values[i][k]];
 })));
 let anchors = [], anatomyCentre = 0;
+// Sticky titles only show once docked: as they slide in from below they would cross the object
+const stickies = [...document.querySelectorAll('.sticky')].map((el) => ({ el, top: NaN, bottom: NaN }));
 
 function measure() {
   const maxScroll = document.documentElement.scrollHeight - innerHeight;
@@ -425,6 +427,7 @@ function measure() {
     if (i === stops.length - 1) a = maxScroll;
     return Math.max(0, Math.min(maxScroll, a));
   });
+  for (const s of stickies) { const cs = getComputedStyle(s.el); s.top = parseFloat(cs.top); s.bottom = parseFloat(cs.bottom); }
   const an = stops.find((s) => num(s.dataset.callouts) > 0);
   if (an) anatomyCentre = an.offsetTop + an.offsetHeight / 2;
 }
@@ -566,6 +569,13 @@ const gridEl = document.querySelector('.backdrop__grid');
 const railFill = document.getElementById('railFill');
 const railLabel = document.getElementById('railLabel');
 let lastIdx = -1, lastPaper = null;
+function updateDocked() {
+  for (const s of stickies) {
+    const r = s.el.getBoundingClientRect();
+    const docked = !Number.isNaN(s.top) ? Math.abs(r.top - s.top) < 2 : !Number.isNaN(s.bottom) && Math.abs(innerHeight - r.bottom - s.bottom) < 2;
+    if (docked !== s.el.classList.contains('is-docked')) s.el.classList.toggle('is-docked', docked);
+  }
+}
 function updateHud(p) {
   railFill.style.transform = `scaleX(${p.toFixed(4)})`;
   const paper = smooth(Math.min(1, Math.max(0, (cur.paper - 0.45) / 0.45)));
@@ -636,6 +646,7 @@ function frame(now = performance.now()) {
 
   U.uSweep.value = sweepRange[0] + (sweepRange[1] - sweepRange[0]) * cur.reveal;
   const paper = updateHud(p);
+  updateDocked();
   const darkUi = document.body.classList.contains('is-dark');
   U.uWireColor.value.copy(wireA).lerp(wireB, darkUi ? 0 : paper);
   U.uWire.value = Math.max(cur.wire, 0);

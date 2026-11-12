@@ -232,6 +232,10 @@ body.is-dark .card { background: rgba(20, 20, 22, .82); }
   .reveal { transform: none; filter: none; }
 }
 
+/* the sticky title of the reveal section shows only once docked (main.js toggles .is-docked) */
+.sticky { opacity: 0; transition: opacity 450ms var(--ease-out); }
+.sticky.is-docked { opacity: 1; }
+
 /* ?shot= mode: no transitions, no loader */
 .is-shot *, .is-shot *::before, .is-shot *::after { transition: none !important; }
 .is-shot .loader { display: none; }

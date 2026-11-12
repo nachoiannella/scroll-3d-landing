@@ -5,3 +5,5 @@ guitarras-candidatas.jpg
 node_modules/
 .DS_Store
 Thumbs.db
+# LinkedIn drafts and the demo video (shared on social, not part of the repo)
+linkedin/
