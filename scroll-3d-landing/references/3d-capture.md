@@ -17,7 +17,7 @@ Contenido:
 
 | Técnica | Cómo funciona | Ventajas | Contras | Para esta web |
 |---|---|---|---|---|
-| **Fotogrametría** | 80–300 fotos desde todos los ángulos; el software triangula la geometría y proyecta la textura | Textura fotográfica real, detalle alto, barata (un celular alcanza) | Sufre con superficies brillantes, negras, transparentes o sin textura | **La opción principal.** Es lo que usa toppervenom |
+| **Fotogrametría** | 80–300 fotos desde todos los ángulos; el software triangula la geometría y proyecta la textura | Textura fotográfica real, detalle alto, barata (un celular alcanza) | Sufre con superficies brillantes, negras, transparentes o sin textura | **La opción principal** si tenés el objeto |
 | **Escáner de luz estructurada** (Revopoint, Creality, Shining3D, Artec) | Proyecta patrones y mide la deformación | Geometría muy precisa, rápida | Textura pobre, equipo de USD 300 a 20 000+ | Bueno para la geometría; la textura conviene sacarla con fotos |
 | **LiDAR del iPhone/iPad Pro** | Sensor de profundidad | Instantáneo | Resolución de centímetros: sirve para habitaciones, **no para productos** | Evitar para objetos chicos |
 | **Gaussian Splatting (3DGS)** | Fotos o video → nube de "manchas" | Fotorrealismo extremo, reflejos y pelusa | **No es una malla**: no hay wireframe ni shaders de revelado, y es pesado | Solo si la página es "mirá qué real se ve" y no hay efectos de plano (ver el final del archivo) |

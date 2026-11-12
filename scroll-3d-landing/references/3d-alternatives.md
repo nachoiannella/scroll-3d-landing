@@ -34,6 +34,8 @@ Mientras el usuario consigue el modelo final, arrancá con un proxy (un objeto p
 - **TRELLIS** (Microsoft) — open source, bueno con geometría compleja.
 - **Stable Fast 3D / SPAR3D** (Stability) — rápidos, de calidad media.
 
+**Caso real:** el modelo de [toppervenom.com](https://x.com/evilrabbit_/status/2120605106425167882) se hizo así. Evil Rabbit no tenía las zapatillas: con IA juntó material de archivo, generó imágenes de todas las vistas y exportó un modelo 3D fiel al diseño original. Si no hay objeto, este camino puede llegar a un resultado de primer nivel.
+
 **Cómo sacarle el máximo:**
 1. **La imagen de entrada lo es todo:** el objeto solo, sobre fondo blanco o gris liso, con luz pareja, en vista 3/4 o de perfil, nítido y en alta resolución. Recortalo antes de subirlo (fondo transparente).
 2. **Multivista:** si la herramienta lo acepta, subí frente, perfil, espalda y 3/4. Mejora mucho la parte de atrás, que si no la IA "inventa".

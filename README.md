@@ -2,6 +2,8 @@
 
 **Una skill de Claude para crear landing pages con un objeto 3D protagonista**: el objeto se arma, se revela, cambia de color y se despieza mientras scrolleás. Sirve para cualquier cosa (una consola, una guitarra, una botella, un mueble, una pieza de museo) y está hecha en HTML, CSS y JavaScript sin framework, más [Three.js](https://threejs.org).
 
+> **De dónde salió la idea.** Todo arrancó con [este post de Evil Rabbit](https://x.com/evilrabbit_/status/2120605106425167882) presentando [toppervenom.com](https://toppervenom.com): la landing que armó para las Topper Venom de básquet que usaba de chico en los 90. Con ayuda de IA encontró material de archivo y al diseñador original (Paulo Ibarra), reconstruyó la zapatilla en 3D y la publicó como un plano técnico que se vuelve objeto. Ver esa página nos llevó a preguntarnos cómo estaba hecha. Esta skill es el resultado de analizarla y llevar la técnica a cualquier objeto. **La idea, el concepto y la página original son suyos.**
+
 **Demos en vivo → [nachoiannella.github.io/scroll-3d-landing](https://nachoiannella.github.io/scroll-3d-landing/)**
 
 | [Game Boy, 1989](https://nachoiannella.github.io/scroll-3d-landing/demos/gameboy/) | [Stratocaster, 1954](https://nachoiannella.github.io/scroll-3d-landing/demos/stratocaster/) |
@@ -117,6 +119,6 @@ img/                            capturas
 - **Modelo de la Stratocaster:** ["Fender Stratocaster Guitar"](https://sketchfab.com/3d-models/fender-stratocaster-guitar-15a37147641b4c1b963bb494b234593f) de Ryan_Nein, bajo licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Lo optimicé para la web.
 - **Game Boy:** modelo, pixel art y etiquetas originales, armados por código. No se reproduce ningún logo.
 - [Three.js](https://threejs.org) (MIT), fuentes [Geist](https://vercel.com/font) e [Instrument Serif](https://fonts.google.com/specimen/Instrument+Serif) (OFL).
-- Inspirada en el nivel de calidad de [toppervenom.com](https://toppervenom.com).
+- **Idea original: [Evil Rabbit](https://x.com/evilrabbit_/status/2120605106425167882)** y su [toppervenom.com](https://toppervenom.com) (zapatillas diseñadas por Paulo Ibarra). La plantilla reimplementa de forma genérica técnicas que vimos al analizar esa página: poses declaradas por sección, shaders de revelado y overlays SVG anclados al 3D. El concepto de "plano técnico" de la demo del Game Boy también viene de ahí.
 
 Las demos son **proyectos de homenaje, no oficiales**. *Game Boy* es una marca registrada de Nintendo. *Fender* y *Stratocaster* son marcas registradas de Fender Musical Instruments Corporation. Ninguna de las dos empresas participa en este proyecto ni lo respalda.
