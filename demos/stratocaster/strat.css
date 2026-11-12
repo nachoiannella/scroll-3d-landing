@@ -1,0 +1,89 @@
+/* Concept: a 1950s patent sheet (ink on paper) that turns into a stage (warm light on black).
+   The template calls the two backdrop states "grid" and "paper": here grid = sheet, paper = stage. */
+:root {
+  --sheet: #efe8d8;
+  --ink: #1b1a17;
+  --amber: #d98a2b;              /* sunburst / valve: the accent */
+  --bp: var(--sheet);            /* the template uses --bp as the base background colour */
+  --bp-deep: #e4dac4;
+  --fg: var(--ink);
+  --fg-dim: rgba(27, 26, 23, .66);
+  --rule: rgba(27, 26, 23, .24);
+}
+body.is-paper { --fg: #f1e6cf; --fg-dim: rgba(241, 230, 207, .64); --rule: rgba(241, 230, 207, .2); }
+body { background: var(--sheet); }
+::selection { background: var(--amber); color: #120d08; }
+
+/* --- the patent sheet: paper with fibre, a double frame and the figure marks --- */
+.backdrop__grid {
+  background-color: var(--sheet);
+  background-image:
+    radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(120, 96, 60, .16)),
+    repeating-linear-gradient(0deg, rgba(27, 26, 23, .018) 0 1px, transparent 1px 3px);
+  background-size: auto;
+}
+.backdrop__grid::after {
+  content: ""; position: absolute; inset: clamp(14px, 2.2vw, 30px);
+  border: 1.5px solid rgba(27, 26, 23, .55); box-shadow: inset 0 0 0 5px var(--sheet), inset 0 0 0 6px rgba(27, 26, 23, .35);
+  background: none; pointer-events: none;
+}
+.sheet-mark { position: absolute; font: 400 13px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: rgba(27, 26, 23, .6); }
+.sheet-mark--tl { top: clamp(30px, 4vw, 52px); left: 50%; transform: translateX(-50%); font: italic 400 26px/1 var(--serif); letter-spacing: 0; text-transform: none; }
+.sheet-mark--br { right: clamp(30px, 4vw, 56px); bottom: clamp(26px, 3.4vw, 46px); }
+
+/* --- the stage: black with a warm spotlight from above --- */
+.backdrop__paper {
+  background-color: #080706;
+  background-image:
+    radial-gradient(60% 55% at 50% 52%, rgba(217, 138, 43, .2), transparent 70%),
+    radial-gradient(38% 80% at 50% -10%, rgba(255, 214, 160, .16), transparent 70%),
+    radial-gradient(120% 90% at 50% 50%, transparent 50%, rgba(0, 0, 0, .7));
+  background-size: 100% 100%;     /* the template tiles this layer at 24px for its paper grid */
+}
+
+/* --- template pieces that were white-on-blue --- */
+.loader { background: var(--sheet); color: var(--ink); }
+.loader__bar { background: rgba(27, 26, 23, .18); }
+.loader__bar span { background: var(--ink); }
+.loader__pct { color: rgba(27, 26, 23, .7); }
+.dim-tick { stroke: var(--fg); }
+.dim-label-bg { fill: var(--sheet); }
+.co-dot { fill: var(--sheet); }
+#overlay text { fill: var(--fg); }
+.btn { background: var(--ink); color: var(--sheet); }
+@media (hover: hover) and (pointer: fine) { .btn:hover { background: #33302a; } }
+body.is-paper .btn--ink { background: #f1e6cf; color: #120d08; }
+.card { background: rgba(20, 16, 12, .72); }
+body:not(.is-paper) .card { background: rgba(239, 232, 216, .85); }
+
+/* --- type and accents --- */
+.nav__brand { letter-spacing: .14em; }
+.nav__year { color: var(--amber); margin-left: .15em; }
+.kicker { color: var(--fg-dim); margin: 0 0 18px; }
+.hero .kicker::before { content: ""; display: inline-block; width: 28px; height: 1px; background: currentColor; vertical-align: middle; margin-right: 12px; }
+.display { font-size: clamp(64px, 10.5vw, 168px); }
+.display em { color: var(--amber); }
+body.is-paper .title em { color: var(--amber); }
+body.is-paper .rail__track span { background: var(--amber); }
+body.is-paper .parts li::before, body.is-paper .timeline b { color: var(--amber); }
+.copy--narrow { max-width: 380px; }
+.hero { position: relative; z-index: 1; margin-top: -18vh; }
+.titleblock { bottom: 96px; }
+
+/* the reveal: wide object in the middle, title at the top */
+.sec--tall .copy.sticky { top: 10vh; }
+
+.outro .credit { font-size: 10.5px; max-width: 560px; line-height: 1.7; }
+.outro .credit a { color: var(--fg); text-underline-offset: 3px; }
+
+@media (max-width: 860px) {
+  .hero { margin-top: 0; }
+  .sec--tall .copy.sticky { top: auto; bottom: 18vh; }
+  .sheet-mark--br { display: none; }
+  /* anatomy on a phone: only the part names, so the panel does not cover the guitar */
+  #anatomia .parts li { font-size: 0; padding: 9px 0 9px 40px; }
+  #anatomia .parts li::before { top: 11px; }
+  #anatomia .parts li b { font-size: 16px; }
+  body:not(.is-paper) .copy:not(.copy--center), body:not(.is-paper) .metrics__head { background: rgba(239, 232, 216, .88); }
+  body.is-paper .copy:not(.copy--center), body.is-paper .metrics__head { background: rgba(10, 8, 6, .78); }
+}

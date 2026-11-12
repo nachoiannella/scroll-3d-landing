@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game Boy, 1989 — Lámina Nº 01</title>
+  <meta name="description" content="La historia del Game Boy original (DMG-01) contada pieza por pieza: del plano de Nintendo R&D1 a 118 millones de bolsillos." />
+  <meta property="og:title" content="Game Boy, 1989" />
+  <meta property="og:description" content="Un ladrillo gris de 220 gramos que puso los videojuegos en el bolsillo." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Silkscreen&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="gameboy.css" />
+
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+  </script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" />
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop__grid"></div>
+    <div class="backdrop__paper"></div>
+  </div>
+  <canvas id="stage" aria-label="Modelo 3D interactivo del Game Boy original. Arrastrá para girarlo."></canvas>
+  <svg id="overlay" aria-hidden="true"></svg>
+
+  <div class="loader" id="loader" role="status" aria-live="polite">
+    <div class="loader__inner">
+      <span class="mono">TRAZANDO LÁMINA Nº 01 · DMG-01</span>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <span class="loader__pct" id="loaderPct">0%</span>
+    </div>
+  </div>
+
+  <header class="nav">
+    <a class="nav__brand" href="#top" aria-label="Volver arriba">DMG<span class="nav__dot">·</span>01</a>
+    <nav class="nav__links mono" aria-label="Secciones">
+      <a href="#plano">Plano</a>
+      <a href="#anatomia">Anatomía</a>
+      <a href="#pantalla">Pantalla</a>
+      <a href="#interior">Interior</a>
+      <a href="#historia">Historia</a>
+    </nav>
+  </header>
+
+  <aside class="rail" aria-hidden="true">
+    <div class="rail__track"><span id="railFill"></span></div>
+    <span class="mono rail__label" id="railLabel">REV. 0 — PLANO</span>
+  </aside>
+
+  <div class="colorways" role="tablist" aria-label="Color de la carcasa"><span class="colorways__pill" aria-hidden="true"></span></div>
+
+  <main>
+    <!-- 01 HERO · blueprint -->
+    <section id="top" class="sec sec--hero" data-ry="-0.55" data-rx="0.12" data-x="0.2" data-y="0" data-scale="0.9" data-m-y="0.04" data-m-scale="0.78"
+      data-reveal="0" data-wire="1" data-dims="0" data-callouts="0" data-paper="0" data-screen="0" data-label="REV. 0 — PLANO">
+      <div class="hero">
+        <p class="kicker mono">Nintendo R&amp;D1 · Kioto · 1989</p>
+        <h1 class="display"><em>Game Boy</em><br />1989</h1>
+        <p class="lede">Un ladrillo gris de 220 gramos, cuatro pilas AA y una pantalla de cuatro verdes. Así se armó el aparato que puso los videojuegos en el bolsillo.</p>
+        <div class="hero__cta"><a class="btn" href="#plano">Desplegar el plano</a></div>
+      </div>
+      <dl class="titleblock mono">
+        <div><dt>Modelo</dt><dd>DMG-01</dd></div>
+        <div><dt>Equipo</dt><dd>R&amp;D1</dd></div>
+        <div><dt>Dirección</dt><dd>G. Yokoi</dd></div>
+        <div><dt>Diseño</dt><dd>S. Okada</dd></div>
+        <div><dt>Lanzamiento</dt><dd>21·04·1989</dd></div>
+        <div><dt>Lámina</dt><dd>01 de 08</dd></div>
+      </dl>
+    </section>
+
+    <!-- 02 ELEVATION + DIMENSIONS -->
+    <section id="plano" class="sec" data-ry="0" data-rx="0" data-x="0.17" data-y="0" data-scale="0.9" data-m-scale="0.8"
+      data-reveal="0" data-wire="1" data-dims="1" data-callouts="0" data-paper="0" data-screen="0" data-label="REV. 1 — ALZADO">
+      <div class="copy copy--left">
+        <h2 class="title">Cabe en una mano.</h2>
+        <p>Vista frontal medida sobre el modelo y escalada al tamaño real del DMG-01. Ni un milímetro de más: todo lo que no hacía falta, quedó afuera.</p>
+        <ul class="specs mono">
+          <li><span>Ancho</span><b data-dim="length">— cm</b></li>
+          <li><span>Alto</span><b data-dim="height">— cm</b></li>
+          <li><span>Profundidad</span><b data-dim="width">— cm</b></li>
+          <li><span>Peso</span><b>220 g</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 03 ANATOMY -->
+    <section id="anatomia" class="sec" data-ry="0.38" data-rx="0.08" data-x="-0.04" data-y="0" data-scale="0.86"
+      data-reveal="0.1" data-wire="1" data-dims="0" data-callouts="1" data-paper="0" data-screen="0" data-label="REV. 2 — ANATOMÍA">
+      <div class="copy copy--right">
+        <h2 class="title">Seis piezas, cero adornos.</h2>
+        <ol class="parts">
+          <li><b>LED de batería</b> Un punto rojo que avisa cuándo cambiar las cuatro AA.</li>
+          <li><b>Pantalla LCD</b> 160 × 144 píxeles reflectivos, sin retroiluminación.</li>
+          <li><b>Botones A · B</b> En diagonal, para el pulgar derecho.</li>
+          <li><b>Cruceta</b> Inventada por Gunpei Yokoi para el Game &amp; Watch de Donkey Kong, en 1982.</li>
+          <li><b>Start · Select</b> Dos píldoras de goma inclinadas.</li>
+          <li><b>Parlante</b> Seis ranuras en la esquina redondeada.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 04 REVEAL: tall, sticky title -->
+    <section id="armado" class="sec sec--tall" data-ry="3.4" data-rx="0.16" data-x="0" data-y="-0.14" data-scale="0.66" data-m-y="-0.34" data-m-scale="0.66"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-screen="0" data-label="REV. 3 — PLÁSTICO">
+      <div class="copy copy--center sticky">
+        <h2 class="title title--xl">La línea se vuelve<br /><em>plástico.</em></h2>
+      </div>
+    </section>
+
+    <!-- 05 SCREEN: close-up, it switches on -->
+    <section id="pantalla" class="sec" data-ry="6.28" data-rx="0.02" data-x="0.2" data-y="-0.24" data-scale="1.45" data-m-y="-0.12" data-m-scale="1.25"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-screen="1" data-label="REV. 4 — PANTALLA">
+      <div class="copy copy--left">
+        <p class="kicker mono">Fig. 05 — LCD STN reflectiva</p>
+        <h2 class="title">Cuatro verdes alcanzaron.</h2>
+        <p>Ciento sesenta por ciento cuarenta y cuatro píxeles, cuatro tonos y nada de luz propia. Una pantalla pobre a propósito: barata, legible al sol y con una batería que rendía unas 15 horas.</p>
+        <ul class="lcd-palette" aria-label="Los cuatro tonos de la pantalla">
+          <li style="--c:#9bbc0f"><span class="pixel">0</span></li>
+          <li style="--c:#8bac0f"><span class="pixel">1</span></li>
+          <li style="--c:#306230"><span class="pixel">2</span></li>
+          <li style="--c:#0f380f"><span class="pixel">3</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 06 INSIDE: exploded view -->
+    <section id="interior" class="sec" data-ry="7.15" data-rx="0.22" data-x="0.2" data-y="0.02" data-scale="0.6" data-m-scale="0.55" data-m-y="-0.02"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-screen="1" data-explode="1" data-label="REV. 5 — DESPIECE">
+      <div class="copy copy--left">
+        <h2 class="title">Tecnología vieja, idea nueva.</h2>
+        <p>Yokoi lo llamaba «pensamiento lateral con tecnología marchita»: usar componentes probados y baratos de una manera que nadie había intentado.</p>
+        <ul class="specs mono">
+          <li><span>CPU</span><b>Sharp LR35902 · 4,19 MHz</b></li>
+          <li><span>RAM</span><b>8 KB</b></li>
+          <li><span>Video</span><b>8 KB VRAM</b></li>
+          <li><span>Energía</span><b>4 × AA</b></li>
+          <li><span>Juegos</span><b>Cartucho intercambiable</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 07 NUMBERS -->
+    <section id="metricas" class="sec sec--metrics" data-ry="8.9" data-rx="0.12" data-x="0.25" data-y="0" data-scale="0.82"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-screen="1" data-label="REV. 6 — NÚMEROS">
+      <div class="metrics">
+        <header class="metrics__head">
+          <h2 class="title">En números.</h2>
+          <p class="note">Medidas tomadas del modelo; fechas, precio y ventas de registros públicos.</p>
+        </header>
+        <div class="cards">
+          <article class="card card--big">
+            <span class="mono card__k">Unidades vendidas</span>
+            <span class="card__v"><span class="count" data-to="118.69" data-dec="2">0</span><small>millones</small></span>
+            <span class="mono card__s">Familia Game Boy + Game Boy Color</span>
+          </article>
+          <article class="card">
+            <span class="mono card__k">Primer lote · Japón</span>
+            <span class="card__v"><span class="count" data-to="300000" data-dec="0">0</span></span>
+            <span class="mono card__s">Agotado en dos semanas</span>
+          </article>
+          <article class="card">
+            <span class="mono card__k">Precio · EE. UU.</span>
+            <span class="card__v">US$&#8239;89,99</span>
+            <span class="mono card__s">Con Tetris incluido</span>
+          </article>
+          <article class="card card--palette">
+            <span class="mono card__k">Carcasa · <span id="cwCode">—</span></span>
+            <div class="swatches"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 HISTORY -->
+    <section id="historia" class="sec" data-ry="12.2" data-rx="0.14" data-x="-0.22" data-y="0" data-scale="0.86"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-screen="1" data-label="REV. 7 — HISTORIA">
+      <div class="copy copy--right">
+        <h2 class="title">Del bolsillo al mundo.</h2>
+        <p>Yokoi imaginaba un Game &amp; Watch más avanzado. Satoru Okada empujó por cartuchos intercambiables y un hardware más potente. Ganó Okada, y Yokoi le dio el proyecto entero.</p>
+        <ol class="timeline mono">
+          <li><b>1980</b><span>Nace Game &amp; Watch, el abuelo de bolsillo</span></li>
+          <li><b>1989</b><span>21 de abril en Japón; 31 de julio en Norteamérica, con Tetris</span></li>
+          <li><b>1990</b><span>Llega a Europa</span></li>
+          <li><b>1996</b><span>Game Boy Pocket, y Pokémon Rojo y Verde en Japón</span></li>
+          <li><b>1998</b><span>Game Boy Color</span></li>
+          <li><b>2026</b><span>Redibujado pieza por pieza en 3D</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <footer class="outro" data-ry="12.57" data-rx="0.08" data-x="0" data-y="0.12" data-scale="0.78" data-m-y="-0.02" data-m-scale="0.7"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-screen="1" data-label="REV. 8 — FINAL">
+      <p class="mono">Proyecto de homenaje, no oficial. Game Boy es una marca registrada de Nintendo.</p>
+      <a class="btn btn--ink" href="#top">Volver a la lámina 01</a>
+    </footer>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

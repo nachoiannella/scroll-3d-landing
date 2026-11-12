@@ -1,0 +1,37 @@
+/* Project layer on top of the template: 1989 manual + the DMG's screen */
+:root {
+  --paper: #efebe1;                 /* manual paper */
+  --berry: #9b2c5a;                 /* A/B buttons: the accent colour */
+  --lcd-0: #9bbc0f; --lcd-3: #0f380f;
+  --pixel: "Silkscreen", var(--mono);
+}
+
+.nav__dot { color: var(--berry); margin: 0 .1em; }
+body:not(.is-paper) .nav__dot { color: #ff9cc6; }
+
+.kicker { color: var(--fg-dim); margin: 0 0 18px; }
+.hero .kicker::before { content: ""; display: inline-block; width: 28px; height: 1px; background: currentColor; vertical-align: middle; margin-right: 12px; }
+
+/* the reveal: the object is tall and centred, so the title goes at the top */
+.sec--tall .copy.sticky { top: 9vh; }
+
+/* accent in paper mode: the berry red of the A/B buttons */
+body.is-paper .rail__track span { background: var(--berry); }
+body.is-paper .parts li::before, body.is-paper .timeline b { color: var(--berry); }
+body.is-paper.is-dark .timeline b { color: #e07aa6; }
+
+/* the screen's four greens, with their palette index in a pixel font */
+.lcd-palette { list-style: none; display: flex; gap: 0; padding: 0; margin: 28px 0 0; border: 1px solid var(--rule); width: max-content; }
+.lcd-palette li { width: 64px; height: 64px; background: var(--c); display: flex; align-items: flex-end; padding: 6px 8px; }
+.lcd-palette .pixel { font: 11px/1 var(--pixel); color: var(--lcd-0); mix-blend-mode: difference; }
+.lcd-palette li:nth-child(-n+2) .pixel { color: var(--lcd-3); mix-blend-mode: normal; }
+
+/* counters in the pixel font: a nod to the screen */
+.card--big .card__v { font-family: var(--pixel); font-size: clamp(40px, 4.2vw, 58px); letter-spacing: -0.02em; }
+
+.outro p { max-width: 420px; }
+
+@media (max-width: 860px) {
+  .sec--tall .copy.sticky { top: auto; bottom: 18vh; }
+  .lcd-palette li { width: 52px; height: 52px; }
+}

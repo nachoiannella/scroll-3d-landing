@@ -1,0 +1,7 @@
+# original 22 MB download (CC BY): not needed by the demo, see README
+demos/stratocaster/source/
+# third-party thumbnails used only to pick a model
+guitarras-candidatas.jpg
+node_modules/
+.DS_Store
+Thumbs.db

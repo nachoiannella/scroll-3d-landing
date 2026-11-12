@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stratocaster, 1954 — Lámina Nº 01</title>
+  <meta name="description" content="La Stratocaster contada como una patente que se vuelve escenario: tres pastillas, un vibrato a resortes y un cuerpo con curvas, en 3D." />
+  <meta property="og:title" content="Stratocaster, 1954" />
+  <meta property="og:description" content="De la mesa de dibujo de Fullerton al escenario." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="strat.css" />
+
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+  </script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" />
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/GLTFLoader.js" />
+  <link rel="preload" href="models/strat.glb" as="fetch" crossorigin />
+</head>
+<body>
+  <!-- grid = patent sheet, paper = stage (the template names the two backdrop states) -->
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop__grid"><span class="sheet-mark sheet-mark--tl">Fig. 1</span><span class="sheet-mark sheet-mark--br">Fullerton, Calif. · 1954</span></div>
+    <div class="backdrop__paper"></div>
+  </div>
+  <canvas id="stage" aria-label="Modelo 3D interactivo de una Stratocaster. Arrastrá para girarla."></canvas>
+  <svg id="overlay" aria-hidden="true"></svg>
+
+  <div class="loader" id="loader" role="status" aria-live="polite">
+    <div class="loader__inner">
+      <span class="mono">Entintando la lámina Nº 01</span>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <span class="loader__pct" id="loaderPct">0%</span>
+    </div>
+  </div>
+
+  <header class="nav">
+    <a class="nav__brand" href="#top" aria-label="Volver arriba">STRAT<span class="nav__year">’54</span></a>
+    <nav class="nav__links mono" aria-label="Secciones">
+      <a href="#plano">Lámina</a>
+      <a href="#anatomia">Anatomía</a>
+      <a href="#pastillas">Sonido</a>
+      <a href="#cuerpo">Cuerpo</a>
+      <a href="#historia">Historia</a>
+    </nav>
+  </header>
+
+  <aside class="rail" aria-hidden="true">
+    <div class="rail__track"><span id="railFill"></span></div>
+    <span class="mono rail__label" id="railLabel">Fig. 1 — Lámina</span>
+  </aside>
+
+  <div class="colorways" role="tablist" aria-label="Acabado del cuerpo"><span class="colorways__pill" aria-hidden="true"></span></div>
+
+  <main>
+    <!-- 01 HERO: the patent sheet -->
+    <section id="top" class="sec sec--hero" data-ry="-0.3" data-rx="0.32" data-rz="0.3" data-x="0.15" data-y="0.06" data-scale="1.15" data-m-y="0.02" data-m-scale="0.95" data-m-rz="0.5"
+      data-reveal="0" data-wire="1" data-dims="0" data-callouts="0" data-paper="0" data-label="Fig. 1 — Lámina">
+      <div class="hero">
+        <p class="kicker mono">Fullerton, California · 1954</p>
+        <h1 class="display"><em>Strato</em>caster</h1>
+        <p class="lede">Tres pastillas, un vibrato a resortes y un cuerpo con curvas pensado para apoyarse contra quien la toca. Así empezó, dibujada a lápiz, la forma que hoy cualquiera reconoce como "guitarra eléctrica".</p>
+        <div class="hero__cta"><a class="btn" href="#plano">Desplegar la lámina</a></div>
+      </div>
+      <dl class="titleblock mono">
+        <div><dt>Instrumento</dt><dd>Guitarra eléctrica</dd></div>
+        <div><dt>Año</dt><dd>1954</dd></div>
+        <div><dt>Diseño</dt><dd>L. Fender · F. Tavares</dd></div>
+        <div><dt>Con</dt><dd>B. Carson · G. Fullerton</dd></div>
+        <div><dt>Escala</dt><dd>25,5″</dd></div>
+        <div><dt>Lámina</dt><dd>01 de 09</dd></div>
+      </dl>
+    </section>
+
+    <!-- 02 ELEVATION + DIMENSIONS -->
+    <section id="plano" class="sec" data-ry="0" data-rx="0" data-rz="0" data-x="0.17" data-y="0.03" data-scale="1.28" data-m-scale="1" data-m-y="0.02"
+      data-reveal="0" data-wire="1" data-dims="1" data-callouts="0" data-paper="0" data-label="Fig. 2 — Alzado">
+      <div class="copy copy--left copy--narrow">
+        <h2 class="title">Una patente en papel.</h2>
+        <p>Vista frontal medida sobre el modelo, a escala real. De la cejuela al puente hay 25,5 pulgadas: el largo de escala que Fender eligió para toda la línea.</p>
+        <ul class="specs mono">
+          <li><span>Largo total</span><b data-dim="length">— cm</b></li>
+          <li><span>Ancho del cuerpo</span><b data-dim="height">— cm</b></li>
+          <li><span>Espesor máx.</span><b data-dim="width">— cm</b></li>
+          <li><span>Escala</span><b>647,7 mm</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 03 ANATOMY: stood up like on a stand -->
+    <section id="anatomia" class="sec" data-ry="0.42" data-rx="0.06" data-rz="1.5708" data-x="-0.02" data-y="0" data-scale="0.92" data-m-rz="0.2" data-m-ry="0.3" data-m-scale="0.95" data-m-y="0.1"
+      data-reveal="0.06" data-wire="1" data-dims="0" data-callouts="1" data-paper="0" data-label="Fig. 3 — Anatomía">
+      <div class="copy copy--right">
+        <h2 class="title">Seis decisiones.</h2>
+        <ol class="parts">
+          <li><b>Clavijero</b> Las seis clavijas en línea, todas del mismo lado.</li>
+          <li><b>Mástil de arce</b> De una pieza, atornillado al cuerpo, con 21 trastes y puntos negros.</li>
+          <li><b>Doble cutaway</b> Dos cortes en el cuerpo para llegar a los trastes más agudos.</li>
+          <li><b>Tres pastillas</b> La primera Fender con tres.</li>
+          <li><b>Puente con vibrato</b> A resortes: la palanca dobla las notas.</li>
+          <li><b>Volumen y tonos</b> Todo al alcance de la mano derecha.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 04 REVEAL: from paper to stage -->
+    <section id="armado" class="sec sec--tall" data-ry="6.03" data-rx="0.22" data-rz="0.1" data-x="0" data-y="-0.16" data-scale="1.05" data-m-y="-0.3" data-m-scale="0.9" data-m-rz="0.3"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-label="Fig. 4 — Escenario">
+      <div class="copy copy--center sticky">
+        <h2 class="title title--xl">Del papel<br /><em>al escenario.</em></h2>
+      </div>
+    </section>
+
+    <!-- 05 SOUND: close-up on the pickups -->
+    <section id="pastillas" class="sec" data-ry="6.43" data-rx="0.42" data-rz="-0.08" data-x="0.44" data-y="0.02" data-scale="2.3" data-m-x="0.34" data-m-y="0.04" data-m-scale="2"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-label="Fig. 5 — Sonido">
+      <div class="copy copy--left">
+        <p class="kicker mono">Fig. 5 — Pastillas y vibrato</p>
+        <h2 class="title">Tres voces y una palanca.</h2>
+        <p>Fue la primera Fender con tres pastillas y con un vibrato a resortes. Cada pastilla escucha las cuerdas en un punto distinto: cerca del mástil suena redonda; cerca del puente, filosa.</p>
+        <ul class="specs mono">
+          <li><span>Pastillas</span><b>3 simples</b></li>
+          <li><span>Vibrato</span><b>A resortes</b></li>
+          <li><span>Cuerdas</span><b>6</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 06 BODY: the contours, seen from behind -->
+    <section id="cuerpo" class="sec" data-ry="8.75" data-rx="0.28" data-rz="0.18" data-x="-0.16" data-y="0" data-scale="1.25" data-m-scale="1" data-m-y="0.03"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-label="Fig. 6 — Cuerpo">
+      <div class="copy copy--right">
+        <h2 class="title">Curvas para el cuerpo.</h2>
+        <p>Fue la primera Fender con el cuerpo contorneado: los bordes rebajados se apoyan contra las costillas y el antebrazo. En 1954, el cuerpo era de fresno macizo.</p>
+        <ul class="specs mono">
+          <li><span>Cuerpo (1954)</span><b>Fresno macizo</b></li>
+          <li><span>Forma</span><b>Contorneada · doble cutaway</b></li>
+          <li><span>Mástil</span><b>Arce, una pieza</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 07 NUMBERS -->
+    <section id="metricas" class="sec sec--metrics" data-ry="12.0" data-rx="0.14" data-rz="0.42" data-x="0.27" data-y="-0.02" data-scale="0.95" data-m-rz="0.4"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-label="Fig. 7 — Números">
+      <div class="metrics">
+        <header class="metrics__head">
+          <h2 class="title">En números.</h2>
+          <p class="note">Medidas tomadas del modelo; especificaciones del diseño original de 1954.</p>
+        </header>
+        <div class="cards">
+          <article class="card card--big">
+            <span class="mono card__k">Largo de escala</span>
+            <span class="card__v"><span class="count" data-to="647.7" data-dec="1">0</span><small>mm</small></span>
+            <span class="mono card__s">25,5 pulgadas, de la cejuela al puente</span>
+          </article>
+          <article class="card">
+            <span class="mono card__k">Trastes</span>
+            <span class="card__v"><span class="count" data-to="21" data-dec="0">0</span></span>
+            <span class="mono card__s">Mástil de arce de una pieza</span>
+          </article>
+          <article class="card">
+            <span class="mono card__k">Pastillas</span>
+            <span class="card__v"><span class="count" data-to="3" data-dec="0">0</span></span>
+            <span class="mono card__s">La primera Fender con tres</span>
+          </article>
+          <article class="card card--palette">
+            <span class="mono card__k">Acabado · <span id="cwCode">—</span></span>
+            <div class="swatches"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 HISTORY -->
+    <section id="historia" class="sec" data-ry="12.27" data-rx="0.16" data-rz="-0.32" data-x="-0.2" data-y="0" data-scale="1.02" data-m-rz="0.3"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-label="Fig. 8 — Historia">
+      <div class="copy copy--right">
+        <h2 class="title">Dos años de dibujo.</h2>
+        <p>La diseñaron Leo Fender, Bill Carson, George Fullerton y Freddie Tavares. A Tavares lo contrataron en 1953, y su primer trabajo fue dibujar versiones de la Strat.</p>
+        <ol class="timeline mono">
+          <li><b>1952</b><span>Empieza el diseño</span></li>
+          <li><b>1953</b><span>Freddie Tavares llega a Fender y la dibuja</span></li>
+          <li><b>1954</b><span>Una tirada previa en abril; producción en serie desde octubre</span></li>
+          <li><b>2026</b><span>Redibujada como lámina y llevada a 3D</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <footer class="outro" data-ry="12.57" data-rx="0.12" data-rz="0" data-x="0" data-y="0.1" data-scale="1.1" data-m-y="-0.02" data-m-scale="0.85" data-m-rz="0.4"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-label="Fig. 9 — Final">
+      <p class="mono">Proyecto de homenaje, no oficial. Fender y Stratocaster son marcas registradas de Fender Musical Instruments Corporation.</p>
+      <p class="mono credit">Modelo 3D: <a href="https://sketchfab.com/3d-models/fender-stratocaster-guitar-15a37147641b4c1b963bb494b234593f" target="_blank" rel="noopener">“Fender Stratocaster Guitar”</a> por Ryan_Nein · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · optimizado para la web</p>
+      <a class="btn btn--ink" href="#top">Volver a la lámina 01</a>
+    </footer>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

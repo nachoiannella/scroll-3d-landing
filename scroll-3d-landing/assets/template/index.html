@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Producto — Lámina Nº 01</title>
+  <meta name="description" content="Un producto real, reconstruido en 3D desde el plano hasta el material." />
+  <meta property="og:title" content="Producto" />
+  <meta property="og:description" content="Reconstruido en 3D desde el plano hasta el material." />
+  <meta property="og:image" content="og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts: for production, self-host the woff2 files and <link rel="preload"> them -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Three.js pinned by version. For production, copy it to vendor/ and point the importmap there. -->
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+  </script>
+  <!-- Start the heavy downloads together with the HTML instead of after the import chain -->
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" />
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/GLTFLoader.js" />
+  <link rel="preload" href="models/product.glb" as="fetch" crossorigin />
+</head>
+<body>
+  <!-- Fixed stage: backdrop < canvas < svg overlay < content -->
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop__grid"></div>
+    <div class="backdrop__paper"></div>
+  </div>
+  <canvas id="stage" aria-label="Modelo 3D interactivo del producto. Arrastrá para girarlo."></canvas>
+  <svg id="overlay" aria-hidden="true"></svg>
+
+  <div class="loader" id="loader" role="status" aria-live="polite">
+    <div class="loader__inner">
+      <span class="mono">TRAZANDO LÁMINA Nº 01</span>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <span class="loader__pct" id="loaderPct">0%</span>
+    </div>
+  </div>
+
+  <header class="nav">
+    <a class="nav__brand" href="#top" aria-label="Volver arriba">MARCA</a>
+    <nav class="nav__links mono" aria-label="Secciones">
+      <a href="#plano">Plano</a>
+      <a href="#anatomia">Anatomía</a>
+      <a href="#metricas">Números</a>
+      <a href="#origen">Origen</a>
+    </nav>
+  </header>
+
+  <aside class="rail" aria-hidden="true">
+    <div class="rail__track"><span id="railFill"></span></div>
+    <span class="mono rail__label" id="railLabel">REV. 0 — PLANO</span>
+  </aside>
+
+  <!-- Built from CONFIG.colorways in main.js -->
+  <div class="colorways" role="tablist" aria-label="Color"><span class="colorways__pill" aria-hidden="true"></span></div>
+
+  <main>
+    <!--
+      Each section is a "stop" of the choreography. The object interpolates between stops while scrolling.
+        data-ry / data-rx  rotation (rad)      data-x / data-y  offset as a fraction of the visible frame
+        data-scale         scale               data-reveal      0 = blueprint, 1 = solid
+        data-wire          line opacity        data-dims / data-callouts  SVG overlays (0..1)
+        data-paper         0 = blue grid, 1 = paper background
+        data-explode       0..1 exploded view (models with several meshes; see CONFIG.explodeFactor)
+        data-m-*           mobile override (data-m-y, data-m-scale, data-m-x…)
+        data-label         text in the progress rail
+    -->
+
+    <!-- 01 HERO -->
+    <section id="top" class="sec sec--hero" data-ry="-0.6" data-rx="0.18" data-x="0.18" data-y="0" data-scale="1" data-m-y="0.05"
+      data-reveal="0" data-wire="1" data-dims="0" data-callouts="0" data-paper="0" data-label="REV. 0 — PLANO">
+      <div class="hero">
+        <h1 class="display"><em>Nombre</em><br />del producto</h1>
+        <p class="lede">Una frase que cuente qué es, de dónde viene y por qué importa. Concreta y con un dato real.</p>
+        <div class="hero__cta"><a class="btn" href="#plano">Desplegar el plano</a></div>
+      </div>
+      <dl class="titleblock mono">
+        <div><dt>Modelo</dt><dd>Nombre</dd></div>
+        <div><dt>Artículo</dt><dd>Nº 000000</dd></div>
+        <div><dt>Origen</dt><dd>Argentina</dd></div>
+        <div><dt>Diseño</dt><dd>Autor</dd></div>
+        <div><dt>Lámina</dt><dd>01 de 06</dd></div>
+      </dl>
+    </section>
+
+    <!-- 02 BLUEPRINT / ELEVATION: pure side view + dimension lines -->
+    <section id="plano" class="sec" data-ry="0" data-rx="0" data-x="0.14" data-y="0.02" data-scale="1.05" data-m-scale="0.94"
+      data-reveal="0" data-wire="1" data-dims="1" data-callouts="0" data-paper="0" data-label="REV. 1 — ALZADO">
+      <div class="copy copy--left">
+        <h2 class="title">Empieza como un dibujo.</h2>
+        <p>Vista lateral medida a partir del modelo 3D y escalada al tamaño real.</p>
+        <ul class="specs mono">
+          <li><span>Largo total</span><b data-dim="length">— cm</b></li>
+          <li><span>Alto</span><b data-dim="height">— cm</b></li>
+          <li><span>Ancho máx.</span><b data-dim="width">— cm</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 03 ANATOMY: three-quarter view + callouts -->
+    <section id="anatomia" class="sec" data-ry="0.75" data-rx="0.12" data-x="-0.11" data-y="0" data-scale="0.88"
+      data-reveal="0.18" data-wire="1" data-dims="0" data-callouts="1" data-paper="0" data-label="REV. 2 — ANATOMÍA">
+      <div class="copy copy--right">
+        <h2 class="title">Las partes que lo hacen único.</h2>
+        <ol class="parts">
+          <li><b>Parte uno</b> Qué es y por qué está ahí.</li>
+          <li><b>Parte dos</b> Qué es y por qué está ahí.</li>
+          <li><b>Parte tres</b> Qué es y por qué está ahí.</li>
+          <li><b>Parte cuatro</b> Qué es y por qué está ahí.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 04 REVEAL: tall section, sticky title, the "wow" moment -->
+    <section id="armado" class="sec sec--tall" data-ry="2.4" data-rx="0.2" data-x="0" data-y="-0.13" data-scale="0.95" data-m-y="-0.3" data-m-scale="0.82"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-label="REV. 3 — MATERIAL">
+      <div class="copy copy--center sticky">
+        <h2 class="title title--xl">La línea se vuelve<br /><em>material.</em></h2>
+      </div>
+    </section>
+
+    <!-- 05 METRICS -->
+    <section id="metricas" class="sec sec--metrics" data-ry="3.6" data-rx="0.1" data-x="0.24" data-y="0" data-scale="0.9"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-label="REV. 4 — NÚMEROS">
+      <div class="metrics">
+        <header class="metrics__head">
+          <h2 class="title">En números.</h2>
+          <p class="note">Las medidas salen del modelo 3D. El resto, del catálogo original.</p>
+        </header>
+        <div class="cards">
+          <article class="card card--big">
+            <span class="mono card__k">Alto</span>
+            <span class="card__v"><span class="count" data-dim-count="height" data-dec="1">0</span><small>cm</small></span>
+          </article>
+          <article class="card">
+            <span class="mono card__k">Largo / ancho</span>
+            <span class="card__v"><span class="count" data-dim-count="ratio" data-dec="2">0</span><small>: 1</small></span>
+          </article>
+          <article class="card">
+            <span class="mono card__k">Dato</span>
+            <span class="card__v">0000</span>
+            <span class="mono card__s">Contexto del dato</span>
+          </article>
+          <article class="card card--palette">
+            <span class="mono card__k">Color · <span id="cwCode">—</span></span>
+            <div class="swatches"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 ORIGIN -->
+    <section id="origen" class="sec" data-ry="6.28" data-rx="0.16" data-x="-0.22" data-y="0" data-scale="0.95"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-label="REV. 5 — ORIGEN">
+      <div class="copy copy--right">
+        <h2 class="title">De dónde viene.</h2>
+        <p>La historia en dos párrafos cortos: contexto, gente y época.</p>
+        <ol class="timeline mono">
+          <li><b>1975</b><span>Hito uno</span></li>
+          <li><b>1990</b><span>Hito dos</span></li>
+          <li><b>2026</b><span>Escaneado y reconstruido en 3D</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <footer class="outro" data-ry="7.2" data-rx="0.1" data-x="0" data-y="0.13" data-scale="0.92" data-m-y="-0.04" data-m-scale="0.84"
+      data-reveal="1" data-wire="0" data-dims="0" data-callouts="0" data-paper="1" data-label="REV. 6 — FINAL">
+      <p class="mono">Marca · País · Créditos</p>
+      <a class="btn btn--ink" href="#top">Volver a la lámina 01</a>
+    </footer>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

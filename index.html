@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>scroll-3d-landing — una skill de Claude para landings 3D</title>
+  <meta name="description" content="Una skill de Claude para crear landing pages con un objeto 3D protagonista que se arma, se revela y se despieza al scrollear. Demos: Game Boy y Stratocaster." />
+  <meta property="og:title" content="scroll-3d-landing" />
+  <meta property="og:description" content="Landings con un objeto 3D protagonista, hechas con Claude. Demos: Game Boy (1989) y Stratocaster (1954)." />
+  <meta property="og:image" content="https://nachoiannella.github.io/scroll-3d-landing/img/strat-lamina.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top">scroll-3d-landing</a>
+    <nav class="mono">
+      <a href="#demos">Demos</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#usar">Usarla</a>
+      <a href="https://github.com/nachoiannella/scroll-3d-landing">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="kicker mono">Una skill de Claude · HTML + CSS + JS + Three.js</p>
+      <h1>Landings donde el objeto<br /><em>se arma al scrollear.</em></h1>
+      <p class="lede">Un objeto 3D protagonista que arranca como dibujo, se vuelve material, muestra sus medidas, se despieza y cambia de color. Para cualquier cosa: una consola, una guitarra, una botella, un mueble, una pieza de museo.</p>
+      <div class="cta">
+        <a class="btn" href="#demos">Ver las demos</a>
+        <a class="btn btn--ghost" href="scroll-3d-landing.skill" download>Descargar la skill</a>
+      </div>
+    </section>
+
+    <section id="demos" class="demos">
+      <h2 class="label mono">Demos</h2>
+      <a class="demo" href="demos/gameboy/">
+        <div class="demo__img"><img src="img/gb-plano.jpg" alt="Game Boy dibujado como plano técnico sobre cuadrícula azul" loading="lazy" /><img class="demo__alt" src="img/gb-despiece.jpg" alt="" loading="lazy" /></div>
+        <div class="demo__body">
+          <p class="mono demo__tag">Modelo armado por código</p>
+          <h3>Game Boy, 1989</h3>
+          <p>Plano técnico de Nintendo R&amp;D1 → manual de 1989. Cada pieza en milímetros reales: despiece por scroll, pantalla LCD que se enciende y carcasas "Play It Loud!".</p>
+          <span class="mono demo__go">Abrir la demo →</span>
+        </div>
+      </a>
+      <a class="demo" href="demos/stratocaster/">
+        <div class="demo__img"><img src="img/strat-lamina.jpg" alt="Stratocaster dibujada como lámina de patente" loading="lazy" /><img class="demo__alt" src="img/strat-pastillas.jpg" alt="" loading="lazy" /></div>
+        <div class="demo__body">
+          <p class="mono demo__tag">Modelo descargado · CC BY</p>
+          <h3>Stratocaster, 1954</h3>
+          <p>Lámina de patente → escenario. Un modelo de Sketchfab optimizado de 22 MB a 1,8 MB, con acabados que pintan solo el cuerpo y una guitarra que se para para mostrar su anatomía.</p>
+          <span class="mono demo__go">Abrir la demo →</span>
+        </div>
+      </a>
+      <a class="demo demo--small" href="scroll-3d-landing/assets/template/">
+        <div class="demo__img"><img src="img/plantilla.jpg" alt="La plantilla base con un objeto de ejemplo" loading="lazy" /></div>
+        <div class="demo__body">
+          <p class="mono demo__tag">Punto de partida</p>
+          <h3>La plantilla</h3>
+          <p>La base que usa la skill, con un objeto de ejemplo. Probala con tu modelo: <code>?model=&lt;url de un .glb&gt;</code>.</p>
+          <span class="mono demo__go">Abrir la plantilla →</span>
+        </div>
+      </a>
+    </section>
+
+    <section id="como" class="how">
+      <h2 class="label mono">Cómo funciona</h2>
+      <p class="big">La calidad no viene del stack —son unos pocos archivos sin framework— sino de cinco cosas que la skill trabaja una por una.</p>
+      <ol class="pillars">
+        <li><b>Un buen modelo</b><span>Escaneado con el celular, generado con IA, modelado, convertido desde CAD, descargado con licencia o armado por código. Limpio, liviano y a escala real: las cotas salen del modelo.</span></li>
+        <li><b>Render de estudio</b><span>Tres luces, environment, tone mapping neutro, sombra de contacto y materiales corregidos.</span></li>
+        <li><b>Un concepto llevado al detalle</b><span>Plano técnico, lámina de patente, ficha de museo, laboratorio… El loader, el rail y cada texto cuentan la misma historia.</span></li>
+        <li><b>Movimiento con peso</b><span>Cada sección declara una pose en el HTML; el motor interpola y amortigua. El objeto rota, se mueve y se para con inercia.</span></li>
+        <li><b>Efectos que justifican el 3D</b><span>Dibujo con líneas ocultas que se vuelve material, despiece, recoloreo por shader, pantallas que se encienden.</span></li>
+      </ol>
+      <div class="shots">
+        <img src="img/gb-anatomia.jpg" alt="Callouts anclados a las piezas del Game Boy" loading="lazy" />
+        <img src="img/strat-anatomia.jpg" alt="Guitarra parada con callouts" loading="lazy" />
+        <img src="img/gb-pantalla.jpg" alt="Pantalla del Game Boy encendida" loading="lazy" />
+        <img src="img/strat-cuerpo.jpg" alt="Vista trasera de la guitarra en el escenario" loading="lazy" />
+      </div>
+      <pre class="code"><code>&lt;section id="anatomia"
+  data-ry="0.42"  data-rz="1.57"  data-x="-0.02"  data-scale="0.92"
+  data-reveal="0.06"  data-wire="1"  data-callouts="1"
+  data-m-rz="0.2"  data-m-y="0.1"&gt;     <span>← pose en escritorio y en móvil</span></code></pre>
+    </section>
+
+    <section id="usar" class="use">
+      <h2 class="label mono">Usarla</h2>
+      <div class="cols">
+        <div>
+          <h3>En Claude Code</h3>
+          <pre class="code"><code>git clone https://github.com/nachoiannella/scroll-3d-landing.git
+cp -r scroll-3d-landing/scroll-3d-landing ~/.claude/skills/</code></pre>
+          <p>Claude la usa sola cuando el pedido encaja.</p>
+        </div>
+        <div>
+          <h3>En claude.ai</h3>
+          <p>Descargá <a href="scroll-3d-landing.skill" download>scroll-3d-landing.skill</a> y subilo en la sección <b>Skills</b> de la configuración.</p>
+        </div>
+      </div>
+      <h3>Pedidos de ejemplo</h3>
+      <ul class="prompts">
+        <li>"Quiero una landing para la historia de la cámara Polaroid SX-70, con el 3D que se despliega al scrollear. No tengo modelo."</li>
+        <li>"Escaneé una zapatilla con el celular (está en scan.glb). Armame una landing tipo plano técnico con sus medidas y partes."</li>
+        <li>"Buscame un modelo libre de una guitarra eléctrica y hacé una página sobre su historia."</li>
+        <li>"Tengo el STEP de nuestro parlante. Hacé una página de producto con vista explosionada y los tres colores."</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot mono">
+    <p>Código bajo <a href="LICENSE">licencia MIT</a> · Modelo de la Stratocaster: <a href="https://sketchfab.com/3d-models/fender-stratocaster-guitar-15a37147641b4c1b963bb494b234593f">"Fender Stratocaster Guitar"</a> de Ryan_Nein, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://threejs.org">Three.js</a></p>
+    <p>Demos de homenaje, no oficiales. Game Boy es marca registrada de Nintendo; Fender y Stratocaster, de Fender Musical Instruments Corporation.</p>
+  </footer>
+</body>
+</html>
